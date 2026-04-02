@@ -16,26 +16,39 @@ body {
   position: relative;
   z-index: 1;
   max-width: 100%;
-  margin: 0 auto;
-  padding: 40px 80px;
+  margin: 0;
+  padding: 30px 80px 30px 320px;
 }
 
 header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  margin-bottom: 36px;
+  z-index: 100;
+  background: linear-gradient(180deg, rgba(15, 12, 41, 0.95), rgba(27, 17, 69, 0.95));
+  border-right: 2px solid rgba(255, 255, 255, 0.1);
+  padding: 40px 20px;
 }
 
 #greeting {
-  font-size: 4rem;
+  font-size: 2rem;
   font-weight: 700;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 #clock {
-  font-size: 7rem;
+  font-size: 4.5rem;
   font-weight: 300;
-  letter-spacing: 8px;
+  letter-spacing: 4px;
   opacity: 0.9;
+  line-height: 1;
 }
 
 /* Timeline */
