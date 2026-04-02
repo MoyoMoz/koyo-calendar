@@ -6,9 +6,6 @@ const CONFIG = {
   REFRESH_INTERVAL: 60000, // Refresh events every 60 seconds
   TIMEZONE: 'America/Los_Angeles',
 
-  // Hide these events (reference-only, not real commitments)
-  HIDDEN_KEYWORDS: ['food bank'],
-
   // Day display range
   DAY_START_HOUR: 7,
   DAY_END_HOUR: 25, // 1 AM next day

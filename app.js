@@ -82,10 +82,6 @@ async function fetchEvents() {
         colorId: e.color,
       }))
       .filter(e => !isNaN(e.start) && !isNaN(e.end))
-      .filter(e => {
-        const title = e.title.toLowerCase();
-        return !(CONFIG.HIDDEN_KEYWORDS || []).some(kw => title.includes(kw));
-      })
       .sort((a, b) => a.start - b.start);
 
     renderTimeline();
