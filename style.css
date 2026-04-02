@@ -15,9 +15,9 @@ body {
 #app {
   position: relative;
   z-index: 1;
-  max-width: 1600px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 40px 60px;
+  padding: 40px 80px;
 }
 
 header {
@@ -26,15 +26,15 @@ header {
 }
 
 #greeting {
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: 700;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 #clock {
-  font-size: 5.5rem;
+  font-size: 7rem;
   font-weight: 300;
-  letter-spacing: 6px;
+  letter-spacing: 8px;
   opacity: 0.9;
 }
 
@@ -82,12 +82,12 @@ header {
 /* Event block */
 .event {
   position: relative;
-  margin-bottom: 4px;
-  padding: 14px 24px;
-  border-radius: 16px;
+  margin-bottom: 6px;
+  padding: 18px 32px;
+  border-radius: 20px;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 28px;
   transition: transform 0.2s, opacity 0.3s;
 }
 
@@ -107,8 +107,8 @@ header {
 /* Mini analog clock on the left */
 .event-clock {
   flex-shrink: 0;
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
 }
 
 .event-clock svg {
@@ -145,15 +145,15 @@ header {
 
 /* Event icon */
 .event-icon {
-  font-size: 3.5rem;
+  font-size: 4.5rem;
   flex-shrink: 0;
-  width: 72px;
-  height: 72px;
+  width: 90px;
+  height: 90px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: rgba(255, 255, 255, 0.15);
-  border-radius: 14px;
+  border-radius: 18px;
 }
 
 /* Middle section — name + activities */
@@ -162,9 +162,9 @@ header {
 }
 
 .event-name {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 600;
-  margin-bottom: 2px;
+  margin-bottom: 3px;
 }
 
 /* Sub-activities within an event */
@@ -178,39 +178,39 @@ header {
 .activity-chip {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  padding: 4px 12px;
-  border-radius: 20px;
+  gap: 6px;
+  padding: 5px 14px;
+  border-radius: 24px;
   background: rgba(255, 255, 255, 0.2);
-  font-size: 0.95rem;
+  font-size: 1.15rem;
   font-weight: 500;
 }
 
 .activity-chip .chip-icon {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
 }
 
 /* Right side — time display */
 .event-time-right {
   flex-shrink: 0;
   text-align: right;
-  min-width: 160px;
+  min-width: 200px;
 }
 
 .event-time-start {
-  font-size: 2rem;
+  font-size: 2.6rem;
   font-weight: 700;
   letter-spacing: 0.5px;
   line-height: 1.2;
 }
 
 .event-time-end {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   opacity: 0.7;
 }
 
 .event-time-duration {
-  font-size: 0.9rem;
+  font-size: 1.05rem;
   opacity: 0.55;
   margin-top: 2px;
 }
@@ -310,10 +310,10 @@ header {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  padding: 3px 14px;
-  border-radius: 20px;
+  padding: 4px 16px;
+  border-radius: 24px;
   background: rgba(255, 255, 255, 0.25);
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 700;
   letter-spacing: 0.5px;
   color: #fff;
