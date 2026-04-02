@@ -15,43 +15,43 @@ body {
 #app {
   position: relative;
   z-index: 1;
-  max-width: 1100px;
+  max-width: 1600px;
   margin: 0 auto;
-  padding: 30px 40px;
+  padding: 40px 60px;
 }
 
 header {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 36px;
 }
 
 #greeting {
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: 700;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 #clock {
-  font-size: 3.5rem;
+  font-size: 5.5rem;
   font-weight: 300;
-  letter-spacing: 4px;
+  letter-spacing: 6px;
   opacity: 0.9;
 }
 
 /* Timeline */
 #timeline {
   position: relative;
-  padding-left: 80px;
+  padding-left: 100px;
 }
 
 /* The vertical line */
 #timeline::before {
   content: '';
   position: absolute;
-  left: 36px;
+  left: 44px;
   top: 0;
   bottom: 0;
-  width: 4px;
+  width: 5px;
   background: rgba(255, 255, 255, 0.15);
   border-radius: 2px;
 }
@@ -59,35 +59,35 @@ header {
 /* Now indicator */
 .now-marker {
   position: absolute;
-  left: 24px;
-  width: 28px;
-  height: 28px;
+  left: 28px;
+  width: 38px;
+  height: 38px;
   background: #ff6b6b;
   border-radius: 50%;
   z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
-  box-shadow: 0 0 20px rgba(255, 107, 107, 0.6);
+  font-size: 16px;
+  box-shadow: 0 0 25px rgba(255, 107, 107, 0.6);
   animation: pulse 2s ease-in-out infinite;
   transition: top 60s linear;
 }
 
 @keyframes pulse {
-  0%, 100% { box-shadow: 0 0 20px rgba(255, 107, 107, 0.6); }
-  50% { box-shadow: 0 0 35px rgba(255, 107, 107, 0.9); }
+  0%, 100% { box-shadow: 0 0 25px rgba(255, 107, 107, 0.6); }
+  50% { box-shadow: 0 0 45px rgba(255, 107, 107, 0.9); }
 }
 
 /* Event block */
 .event {
   position: relative;
-  margin-bottom: 3px;
-  padding: 10px 16px;
-  border-radius: 12px;
+  margin-bottom: 4px;
+  padding: 14px 24px;
+  border-radius: 16px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 20px;
   transition: transform 0.2s, opacity 0.3s;
 }
 
@@ -97,7 +97,7 @@ header {
 
 .event.current {
   transform: scale(1.02);
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
 }
 
 .event.future {
@@ -107,8 +107,8 @@ header {
 /* Mini analog clock on the left */
 .event-clock {
   flex-shrink: 0;
-  width: 44px;
-  height: 44px;
+  width: 60px;
+  height: 60px;
 }
 
 .event-clock svg {
@@ -143,18 +143,17 @@ header {
   fill: #fff;
 }
 
-
 /* Event icon */
 .event-icon {
-  font-size: 2.4rem;
+  font-size: 3.5rem;
   flex-shrink: 0;
-  width: 52px;
-  height: 52px;
+  width: 72px;
+  height: 72px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: rgba(255, 255, 255, 0.15);
-  border-radius: 10px;
+  border-radius: 14px;
 }
 
 /* Middle section — name + activities */
@@ -163,100 +162,97 @@ header {
 }
 
 .event-name {
-  font-size: 1.15rem;
+  font-size: 1.5rem;
   font-weight: 600;
-  margin-bottom: 1px;
+  margin-bottom: 2px;
 }
 
 /* Sub-activities within an event */
 .event-activities {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
-  margin-top: 4px;
+  gap: 6px;
+  margin-top: 6px;
 }
 
 .activity-chip {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 2px 8px;
+  gap: 5px;
+  padding: 4px 12px;
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.2);
-  font-size: 0.75rem;
+  font-size: 0.95rem;
   font-weight: 500;
 }
 
 .activity-chip .chip-icon {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
 }
 
 /* Right side — time display */
 .event-time-right {
   flex-shrink: 0;
   text-align: right;
-  min-width: 120px;
+  min-width: 160px;
 }
 
 .event-time-start {
-  font-size: 1.4rem;
+  font-size: 2rem;
   font-weight: 700;
   letter-spacing: 0.5px;
   line-height: 1.2;
 }
 
 .event-time-end {
-  font-size: 0.85rem;
+  font-size: 1.1rem;
   opacity: 0.7;
 }
 
 .event-time-duration {
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   opacity: 0.55;
-  margin-top: 1px;
+  margin-top: 2px;
 }
-
 
 /* Progress bar */
 .event-duration-bar {
   position: absolute;
   bottom: 0;
   left: 0;
-  height: 4px;
-  border-radius: 0 0 12px 12px;
+  height: 5px;
+  border-radius: 0 0 16px 16px;
   background: rgba(255, 255, 255, 0.3);
   transition: width 60s linear;
 }
 
 /* ===== COLOR THEMES — whimsical & galactic ===== */
 
-/* Each non-Koyo event type gets its own unique look */
-
 /* Errands — warm amber/sunset */
 .event-errand {
   background: linear-gradient(135deg, #e67e22, #f39c12, #f1c40f);
-  border-left: 4px solid #d35400;
+  border-left: 5px solid #d35400;
   color: #fff;
 }
 
 /* Wellness/Yoga — deep teal to emerald */
 .event-wellness {
   background: linear-gradient(135deg, #009688, #26a69a, #4db6ac);
-  border-left: 4px solid #00695c;
+  border-left: 5px solid #00695c;
   color: #fff;
 }
 
 /* Work with Claude — electric indigo to deep space */
 .event-work {
   background: linear-gradient(135deg, #0d0d5e, #1a237e, #3949ab);
-  border-left: 4px solid #000051;
+  border-left: 5px solid #000051;
   color: #fff;
 }
 
 /* Chores/Home — warm terracotta to clay */
 .event-chores {
   background: linear-gradient(135deg, #8d6e63, #a1887f, #bcaaa4);
-  border-left: 4px solid #5d4037;
+  border-left: 5px solid #5d4037;
   color: #fff;
 }
 
@@ -266,14 +262,14 @@ header {
 /* Music — golden hour to magenta */
 .event-music {
   background: linear-gradient(135deg, #ff6f00, #f50057, #d500f9);
-  border-left: 4px solid #e65100;
+  border-left: 5px solid #e65100;
   color: #fff;
 }
 
 /* Default fallback — nebula blue */
 .event-default {
   background: linear-gradient(135deg, #1a237e, #283593, #3f51b5);
-  border-left: 4px solid #0d1b5e;
+  border-left: 5px solid #0d1b5e;
   color: #fff;
 }
 
@@ -283,19 +279,17 @@ header {
   color: #fff;
 }
 
-/* All variations based on the 8pm palette: deep purple → crimson → burnt orange */
-.event-koyo.koyo-0 { background: linear-gradient(135deg, #7b1fa2, #c62828, #d84315); border-left: 4px solid #4a148c; }
-.event-koyo.koyo-1 { background: linear-gradient(135deg, #6a1b9a, #b71c1c, #e65100); border-left: 4px solid #38006b; }
-.event-koyo.koyo-2 { background: linear-gradient(135deg, #8e24aa, #d32f2f, #e64a19); border-left: 4px solid #6a1b9a; }
-.event-koyo.koyo-3 { background: linear-gradient(135deg, #8854d0, #d63031, #e17055); border-left: 4px solid #6c3cb0; }
-.event-koyo.koyo-4 { background: linear-gradient(135deg, #9c27b0, #c0392b, #d35400); border-left: 4px solid #7b1fa2; }
-.event-koyo.koyo-5 { background: linear-gradient(135deg, #7e57c2, #e53935, #ef6c00); border-left: 4px solid #512da8; }
+.event-koyo.koyo-0 { background: linear-gradient(135deg, #7b1fa2, #c62828, #d84315); border-left: 5px solid #4a148c; }
+.event-koyo.koyo-1 { background: linear-gradient(135deg, #6a1b9a, #b71c1c, #e65100); border-left: 5px solid #38006b; }
+.event-koyo.koyo-2 { background: linear-gradient(135deg, #8e24aa, #d32f2f, #e64a19); border-left: 5px solid #6a1b9a; }
+.event-koyo.koyo-3 { background: linear-gradient(135deg, #8854d0, #d63031, #e17055); border-left: 5px solid #6c3cb0; }
+.event-koyo.koyo-4 { background: linear-gradient(135deg, #9c27b0, #c0392b, #d35400); border-left: 5px solid #7b1fa2; }
+.event-koyo.koyo-5 { background: linear-gradient(135deg, #7e57c2, #e53935, #ef6c00); border-left: 5px solid #512da8; }
 
 .event-koyo .event-time-end { color: rgba(255,255,255,0.7); }
 .event-koyo .event-time-duration { color: rgba(255,255,255,0.55); }
 
 /* ===== PER-EVENT KEYWORD OVERRIDES ===== */
-/* These override category colors for specific events */
 
 .event-keyword-preschool { background: linear-gradient(135deg, #1565c0, #42a5f5, #90caf9) !important; border-left-color: #0d47a1 !important; }
 .event-keyword-grocery { background: linear-gradient(135deg, #2e7d32, #43a047, #66bb6a) !important; border-left-color: #1b5e20 !important; }
@@ -315,15 +309,15 @@ header {
 .koyo-badge {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 2px 10px;
+  gap: 5px;
+  padding: 3px 14px;
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.25);
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.5px;
   color: #fff;
-  margin-right: 6px;
+  margin-right: 8px;
   text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
@@ -335,7 +329,7 @@ header {
   left: 0;
   right: 0;
   bottom: 0;
-  border-radius: 12px;
+  border-radius: 16px;
   background: linear-gradient(
     90deg,
     transparent 0%,
@@ -361,16 +355,16 @@ body::before {
   right: 0;
   bottom: 0;
   background-image:
-    radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.4), transparent),
-    radial-gradient(1px 1px at 30% 65%, rgba(255,255,255,0.3), transparent),
-    radial-gradient(1.5px 1.5px at 55% 15%, rgba(255,255,255,0.5), transparent),
-    radial-gradient(1px 1px at 70% 80%, rgba(255,255,255,0.3), transparent),
-    radial-gradient(1.5px 1.5px at 85% 40%, rgba(255,255,255,0.4), transparent),
-    radial-gradient(1px 1px at 15% 90%, rgba(255,255,255,0.2), transparent),
-    radial-gradient(1px 1px at 45% 45%, rgba(255,255,255,0.3), transparent),
-    radial-gradient(1.5px 1.5px at 90% 10%, rgba(255,255,255,0.4), transparent),
-    radial-gradient(1px 1px at 60% 55%, rgba(255,255,255,0.2), transparent),
-    radial-gradient(1px 1px at 25% 35%, rgba(255,255,255,0.3), transparent);
+    radial-gradient(1.5px 1.5px at 10% 20%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1.5px 1.5px at 30% 65%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(2px 2px at 55% 15%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1.5px 1.5px at 70% 80%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(2px 2px at 85% 40%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1.5px 1.5px at 15% 90%, rgba(255,255,255,0.2), transparent),
+    radial-gradient(1.5px 1.5px at 45% 45%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(2px 2px at 90% 10%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1.5px 1.5px at 60% 55%, rgba(255,255,255,0.2), transparent),
+    radial-gradient(1.5px 1.5px at 25% 35%, rgba(255,255,255,0.3), transparent);
   pointer-events: none;
   z-index: 0;
   animation: twinkle 4s ease-in-out infinite alternate;
@@ -381,11 +375,10 @@ body::before {
   100% { opacity: 1; }
 }
 
-
 /* Gap between events (free time) */
 .free-time {
   text-align: center;
-  padding: 8px;
+  padding: 10px;
   opacity: 0.4;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
 }
