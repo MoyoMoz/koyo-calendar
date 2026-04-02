@@ -250,8 +250,8 @@ function renderTimeline() {
       koyoClass = `koyo-${koyoIndex % 6}`;
     }
 
-    // Keyword-specific color override
-    const keywordClass = getKeywordClass(event);
+    // Keyword-specific color override (skip for Koyo events — they keep purple/red)
+    const keywordClass = category === 'koyo' ? '' : getKeywordClass(event);
 
     el.className = `event event-${category} ${status} ${koyoClass} ${keywordClass}`;
 
