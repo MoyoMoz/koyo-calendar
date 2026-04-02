@@ -24,7 +24,7 @@ const CONFIG = {
 
   // Icons for each category (toddler-friendly!)
   ICON_MAP: {
-    'wellness': '🧘',
+    'wellness': '🧘🏾',
     'work': '💻',
     'errand': '🚗',
     'koyo': '🧸',
@@ -35,7 +35,7 @@ const CONFIG = {
 
   // Keyword-based icon overrides (checked against event title)
   KEYWORD_ICONS: {
-    'yoga': '🧘',
+    'yoga': '🧘🏾',
     'preschool': '🏫',
     'pickup': '🚗',
     'drop off': '🚗',
@@ -54,11 +54,45 @@ const CONFIG = {
     'guitar': '🎸',
     'birthday': '🎂',
     'park': '🌳',
-    'walk': '🚶',
+    'walk': '🚶🏾',
     'clean': '🧹',
-    'cook': '👩‍🍳',
+    'cook': '👩🏾‍🍳',
     'video': '🎬',
     'crochet': '🧶',
     'garden': '🌱',
+  },
+
+  // Sub-activities for Koyo time blocks
+  // Add activities as chips inside matching events
+  // Uses keyword matching against event titles
+  ACTIVITIES: {
+    'lunch': [
+      { icon: '🥪', label: 'Eat lunch' },
+      { icon: '📚', label: 'Read a book' },
+    ],
+    'koyo time': [
+      { icon: '🧩', label: 'Puzzle' },
+      { icon: '🎨', label: 'Art / coloring' },
+      { icon: '🏃🏾', label: 'Active play' },
+    ],
+    'play': [
+      { icon: '🧱', label: 'Build / blocks' },
+      { icon: '🎭', label: 'Pretend play' },
+      { icon: '🌳', label: 'Outside time' },
+    ],
+    'wind down': [
+      { icon: '🛁', label: 'Bath' },
+      { icon: '📖', label: 'Story time' },
+      { icon: '🧸', label: 'Quiet play' },
+    ],
+    'dinner prep': [
+      { icon: '👩🏾‍🍳', label: 'Cook together' },
+      { icon: '🎨', label: 'Art / coloring' },
+    ],
+    'music practice': [
+      { icon: '🎹', label: 'Piano' },
+      { icon: '🥁', label: 'Drums' },
+      { icon: '🎤', label: 'Singing' },
+    ],
   }
 };

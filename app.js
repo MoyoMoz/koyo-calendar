@@ -22,6 +22,46 @@ function updateClock() {
   document.getElementById('greeting').textContent = greeting;
 }
 
+// --- Mini Analog Clock SVG ---
+
+function makeClockSVG(date) {
+  const hours = date.getHours() % 12;
+  const minutes = date.getMinutes();
+
+  // Angles (12 o'clock = 0 degrees, clockwise)
+  const minuteAngle = (minutes / 60) * 360;
+  const hourAngle = (hours / 12) * 360 + (minutes / 60) * 30;
+
+  // Convert angle to line endpoint (center = 22, radius varies)
+  const toXY = (angle, len) => {
+    const rad = ((angle - 90) * Math.PI) / 180;
+    return {
+      x: (22 + Math.cos(rad) * len).toFixed(1),
+      y: (22 + Math.sin(rad) * len).toFixed(1),
+    };
+  };
+
+  const hourEnd = toXY(hourAngle, 10);
+  const minEnd = toXY(minuteAngle, 14);
+
+  // Hour tick marks
+  let ticks = '';
+  for (let i = 0; i < 12; i++) {
+    const angle = i * 30;
+    const outer = toXY(angle, 19);
+    const inner = toXY(angle, i % 3 === 0 ? 15 : 17);
+    ticks += `<line x1="${inner.x}" y1="${inner.y}" x2="${outer.x}" y2="${outer.y}" class="clock-tick"/>`;
+  }
+
+  return `<svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="22" cy="22" r="20" class="clock-face"/>
+    ${ticks}
+    <line x1="22" y1="22" x2="${hourEnd.x}" y2="${hourEnd.y}" class="clock-hour-hand"/>
+    <line x1="22" y1="22" x2="${minEnd.x}" y2="${minEnd.y}" class="clock-minute-hand"/>
+    <circle cx="22" cy="22" r="2" class="clock-center"/>
+  </svg>`;
+}
+
 // --- Google Calendar API ---
 
 async function fetchEvents() {
@@ -126,6 +166,16 @@ function getIcon(event) {
   return CONFIG.ICON_MAP[category] || CONFIG.ICON_MAP['default'];
 }
 
+// --- Sub-activities ---
+
+function getActivities(event) {
+  const title = event.title.toLowerCase();
+  for (const [keyword, activities] of Object.entries(CONFIG.ACTIVITIES)) {
+    if (title.includes(keyword)) return activities;
+  }
+  return [];
+}
+
 // --- Format time ---
 
 function formatTime(date) {
@@ -175,7 +225,14 @@ function renderTimeline() {
     else if (now >= event.start) status = 'current';
     else status = 'future';
 
-    el.className = `event event-${category} ${status}`;
+    // Track which Koyo event this is for color rotation
+    let koyoClass = '';
+    if (category === 'koyo') {
+      const koyoIndex = events.slice(0, i).filter(e => getCategory(e) === 'koyo').length;
+      koyoClass = `koyo-${koyoIndex % 6}`;
+    }
+
+    el.className = `event event-${category} ${status} ${koyoClass}`;
 
     // Progress bar for current event
     let progressHTML = '';
@@ -186,11 +243,33 @@ function renderTimeline() {
       progressHTML = `<div class="event-duration-bar" style="width:${pct}%"></div>`;
     }
 
+    // Sub-activities
+    const activities = getActivities(event);
+    let activitiesHTML = '';
+    if (activities.length > 0) {
+      const chips = activities.map(a =>
+        `<span class="activity-chip"><span class="chip-icon">${a.icon}</span>${a.label}</span>`
+      ).join('');
+      activitiesHTML = `<div class="event-activities">${chips}</div>`;
+    }
+
+    // Mini analog clock showing start time
+    const clockHTML = makeClockSVG(event.start);
+
+    // Koyo badge on all his events
+    const koyoBadge = category === 'koyo' ? '<span class="koyo-badge">KOYO</span>' : '';
+
     el.innerHTML = `
+      <div class="event-clock">${clockHTML}</div>
       <div class="event-icon">${icon}</div>
       <div class="event-details">
-        <div class="event-name">${event.title}</div>
-        <div class="event-time">${formatTime(event.start)} — ${formatTime(event.end)} (${formatDuration(event.start, event.end)})</div>
+        <div class="event-name">${koyoBadge}${event.title}</div>
+        ${activitiesHTML}
+      </div>
+      <div class="event-time-right">
+        <div class="event-time-start">${formatTime(event.start)}</div>
+        <div class="event-time-end">to ${formatTime(event.end)}</div>
+        <div class="event-time-duration">${formatDuration(event.start, event.end)}</div>
       </div>
       ${progressHTML}
     `;
