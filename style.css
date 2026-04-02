@@ -216,11 +216,6 @@ header {
   margin-top: 1px;
 }
 
-/* Dark text for yellow/gray events */
-.event-koyo .event-time-end { color: rgba(255,255,255,0.7); }
-.event-koyo .event-time-duration { color: rgba(255,255,255,0.55); }
-.event-chores .event-time-end { color: #555; }
-.event-chores .event-time-duration { color: #555; }
 
 /* Progress bar */
 .event-duration-bar {
@@ -233,35 +228,90 @@ header {
   transition: width 60s linear;
 }
 
-/* Color themes — whimsical & galactic */
+/* ===== COLOR THEMES — whimsical & galactic ===== */
+
+/* Each non-Koyo event type gets its own unique look */
+
+/* Errands — warm amber/sunset */
 .event-errand {
-  background: linear-gradient(135deg, #ff6348, #ff9f43, #feca57);
-  border-left: 4px solid #ee5a24;
+  background: linear-gradient(135deg, #e67e22, #f39c12, #f1c40f);
+  border-left: 4px solid #d35400;
+  color: #fff;
 }
 
+/* Wellness/Yoga — deep teal to emerald */
 .event-wellness {
-  background: linear-gradient(135deg, #00d2d3, #54a0ff, #48dbfb);
-  border-left: 4px solid #0abde3;
+  background: linear-gradient(135deg, #009688, #26a69a, #4db6ac);
+  border-left: 4px solid #00695c;
+  color: #fff;
 }
 
+/* Work with Claude — electric indigo to deep space */
 .event-work {
-  background: linear-gradient(135deg, #1e3799, #4a69bd, #6a89cc);
-  border-left: 4px solid #0c2461;
+  background: linear-gradient(135deg, #0d0d5e, #1a237e, #3949ab);
+  border-left: 4px solid #000051;
+  color: #fff;
 }
+
+/* Chores/Home — warm terracotta to clay */
+.event-chores {
+  background: linear-gradient(135deg, #8d6e63, #a1887f, #bcaaa4);
+  border-left: 4px solid #5d4037;
+  color: #fff;
+}
+
+.event-chores .event-time-end { color: rgba(255,255,255,0.7); }
+.event-chores .event-time-duration { color: rgba(255,255,255,0.55); }
+
+/* Music — golden hour to magenta */
+.event-music {
+  background: linear-gradient(135deg, #ff6f00, #f50057, #d500f9);
+  border-left: 4px solid #e65100;
+  color: #fff;
+}
+
+/* Default fallback — nebula blue */
+.event-default {
+  background: linear-gradient(135deg, #1a237e, #283593, #3f51b5);
+  border-left: 4px solid #0d1b5e;
+  color: #fff;
+}
+
+/* ===== KOYO — purple/red, no pink ===== */
 
 .event-koyo {
   color: #fff;
 }
 
-/* Rotating Koyo colors — all purple/red/berry gradients */
-.event-koyo.koyo-0 { background: linear-gradient(135deg, #6c5ce7, #e84393, #fd79a8); border-left: 4px solid #6c5ce7; }
-.event-koyo.koyo-1 { background: linear-gradient(135deg, #e84393, #fd79a8, #fab1a0); border-left: 4px solid #e84393; }
-.event-koyo.koyo-2 { background: linear-gradient(135deg, #a55eea, #e056a0, #ff6b81); border-left: 4px solid #a55eea; }
-.event-koyo.koyo-3 { background: linear-gradient(135deg, #8854d0, #d63031, #e17055); border-left: 4px solid #8854d0; }
-.event-koyo.koyo-4 { background: linear-gradient(135deg, #7c3aed, #c44569, #f78fb3); border-left: 4px solid #7c3aed; }
-.event-koyo.koyo-5 { background: linear-gradient(135deg, #9b59b6, #e74c3c, #fd79a8); border-left: 4px solid #9b59b6; }
+/* All variations based on the 8pm palette: deep purple → crimson → burnt orange */
+.event-koyo.koyo-0 { background: linear-gradient(135deg, #7b1fa2, #c62828, #d84315); border-left: 4px solid #4a148c; }
+.event-koyo.koyo-1 { background: linear-gradient(135deg, #6a1b9a, #b71c1c, #e65100); border-left: 4px solid #38006b; }
+.event-koyo.koyo-2 { background: linear-gradient(135deg, #8e24aa, #d32f2f, #e64a19); border-left: 4px solid #6a1b9a; }
+.event-koyo.koyo-3 { background: linear-gradient(135deg, #8854d0, #d63031, #e17055); border-left: 4px solid #6c3cb0; }
+.event-koyo.koyo-4 { background: linear-gradient(135deg, #9c27b0, #c0392b, #d35400); border-left: 4px solid #7b1fa2; }
+.event-koyo.koyo-5 { background: linear-gradient(135deg, #7e57c2, #e53935, #ef6c00); border-left: 4px solid #512da8; }
 
-/* Koyo name badge — always visible on his events */
+.event-koyo .event-time-end { color: rgba(255,255,255,0.7); }
+.event-koyo .event-time-duration { color: rgba(255,255,255,0.55); }
+
+/* ===== PER-EVENT KEYWORD OVERRIDES ===== */
+/* These override category colors for specific events */
+
+.event-keyword-preschool { background: linear-gradient(135deg, #1565c0, #42a5f5, #90caf9) !important; border-left-color: #0d47a1 !important; }
+.event-keyword-grocery { background: linear-gradient(135deg, #2e7d32, #43a047, #66bb6a) !important; border-left-color: #1b5e20 !important; }
+.event-keyword-post-office { background: linear-gradient(135deg, #4527a0, #5e35b1, #7e57c2) !important; border-left-color: #311b92 !important; }
+.event-keyword-yoga { background: linear-gradient(135deg, #00695c, #00897b, #26a69a) !important; border-left-color: #004d40 !important; }
+.event-keyword-video { background: linear-gradient(135deg, #ad1457, #c2185b, #e91e63) !important; border-left-color: #880e4f !important; }
+.event-keyword-dinner { background: linear-gradient(135deg, #bf360c, #e64a19, #ff7043) !important; border-left-color: #8c2300 !important; }
+.event-keyword-nap { background: linear-gradient(135deg, #1a237e, #3949ab, #7986cb) !important; border-left-color: #0d1257 !important; }
+.event-keyword-clean { background: linear-gradient(135deg, #00838f, #0097a7, #00bcd4) !important; border-left-color: #006064 !important; }
+.event-keyword-cook { background: linear-gradient(135deg, #e65100, #f57c00, #ffa726) !important; border-left-color: #bf360c !important; }
+.event-keyword-bath { background: linear-gradient(135deg, #0277bd, #0288d1, #29b6f6) !important; border-left-color: #01579b !important; }
+.event-keyword-book { background: linear-gradient(135deg, #4a148c, #7b1fa2, #ab47bc) !important; border-left-color: #38006b !important; }
+.event-keyword-bed { background: linear-gradient(135deg, #1a237e, #283593, #5c6bc0) !important; border-left-color: #0d0d5e !important; }
+.event-keyword-living { background: linear-gradient(135deg, #1b5e20, #2e7d32, #4caf50) !important; border-left-color: #0a3d0a !important; }
+
+/* Koyo name badge */
 .koyo-badge {
   display: inline-flex;
   align-items: center;
@@ -275,25 +325,6 @@ header {
   color: #fff;
   margin-right: 6px;
   text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-}
-
-.event-chores {
-  background: linear-gradient(135deg, #576574, #8395a7, #c8d6e5);
-  color: #fff;
-  border-left: 4px solid #222f3e;
-}
-
-.event-chores .event-time-end { color: rgba(255,255,255,0.7); }
-.event-chores .event-time-duration { color: rgba(255,255,255,0.55); }
-
-.event-music {
-  background: linear-gradient(135deg, #f368e0, #ff9ff3, #feca57);
-  border-left: 4px solid #e056a0;
-}
-
-.event-default {
-  background: linear-gradient(135deg, #2c3e50, #4a69bd, #6a89cc);
-  border-left: 4px solid #1e3799;
 }
 
 /* Shimmer effect on current event */

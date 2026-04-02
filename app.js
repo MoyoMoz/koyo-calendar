@@ -166,6 +166,24 @@ function getIcon(event) {
   return CONFIG.ICON_MAP[category] || CONFIG.ICON_MAP['default'];
 }
 
+// --- Keyword class for per-event colors ---
+
+function getKeywordClass(event) {
+  const title = event.title.toLowerCase();
+  const keywords = [
+    'preschool', 'grocery', 'post-office', 'yoga', 'video',
+    'dinner', 'nap', 'clean', 'cook', 'bath', 'book', 'bed', 'living'
+  ];
+  // Check with spaces too (post office → post-office)
+  const titleNormalized = title.replace(/\s+/g, '-');
+  for (const kw of keywords) {
+    if (title.includes(kw.replace('-', ' ')) || titleNormalized.includes(kw)) {
+      return `event-keyword-${kw}`;
+    }
+  }
+  return '';
+}
+
 // --- Sub-activities ---
 
 function getActivities(event) {
@@ -232,7 +250,10 @@ function renderTimeline() {
       koyoClass = `koyo-${koyoIndex % 6}`;
     }
 
-    el.className = `event event-${category} ${status} ${koyoClass}`;
+    // Keyword-specific color override
+    const keywordClass = getKeywordClass(event);
+
+    el.className = `event event-${category} ${status} ${koyoClass} ${keywordClass}`;
 
     // Progress bar for current event
     let progressHTML = '';
