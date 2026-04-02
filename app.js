@@ -62,53 +62,27 @@ function makeClockSVG(date) {
   </svg>`;
 }
 
-// --- Google Calendar API ---
+// --- Google Calendar via Apps Script ---
 
 async function fetchEvents() {
-  if (!CONFIG.GOOGLE_API_KEY) {
+  if (!CONFIG.APPS_SCRIPT_URL) {
     showDemoEvents();
     return;
   }
 
-  const now = new Date();
-  const startOfDay = new Date(now);
-  startOfDay.setHours(CONFIG.DAY_START_HOUR, 0, 0, 0);
-
-  const endOfDay = new Date(now);
-  if (CONFIG.DAY_END_HOUR >= 24) {
-    endOfDay.setDate(endOfDay.getDate() + 1);
-    endOfDay.setHours(CONFIG.DAY_END_HOUR - 24, 0, 0, 0);
-  } else {
-    endOfDay.setHours(CONFIG.DAY_END_HOUR, 0, 0, 0);
-  }
-
-  const url = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(CONFIG.CALENDAR_ID)}/events?` +
-    `key=${CONFIG.GOOGLE_API_KEY}` +
-    `&timeMin=${startOfDay.toISOString()}` +
-    `&timeMax=${endOfDay.toISOString()}` +
-    `&singleEvents=true` +
-    `&orderBy=startTime` +
-    `&timeZone=${CONFIG.TIMEZONE}`;
-
   try {
-    const response = await fetch(url);
+    const response = await fetch(CONFIG.APPS_SCRIPT_URL);
     const data = await response.json();
 
-    if (data.error) {
-      console.error('Calendar API error:', data.error);
-      showDemoEvents();
-      return;
-    }
-
-    events = (data.items || [])
-      .filter(e => e.start && e.start.dateTime) // skip all-day events
+    events = data
       .map(e => ({
-        id: e.id,
-        title: e.summary || 'Untitled',
-        start: new Date(e.start.dateTime),
-        end: new Date(e.end.dateTime),
-        colorId: e.colorId,
-      }));
+        title: e.title || 'Untitled',
+        start: new Date(e.start),
+        end: new Date(e.end),
+        colorId: e.color,
+      }))
+      .filter(e => !isNaN(e.start) && !isNaN(e.end))
+      .sort((a, b) => a.start - b.start);
 
     renderTimeline();
   } catch (err) {
