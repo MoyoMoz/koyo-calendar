@@ -2,7 +2,7 @@
 // To set up: create a Google Cloud project, enable Calendar API,
 // create an API key restricted to Calendar API
 const CONFIG = {
-  APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbzwWCa6e8KG6pWwid9tLUkopycNDRcHU9GidiTCBdTaxuzdK444t11XwCacgggFSNCS/exec',
+  APPS_SCRIPT_URL: (typeof SECRET !== 'undefined' && SECRET.APPS_SCRIPT_URL) || 'YOUR_APPS_SCRIPT_URL_HERE',
   REFRESH_INTERVAL: 60000, // Refresh events every 60 seconds
   TIMEZONE: 'America/Los_Angeles',
 
